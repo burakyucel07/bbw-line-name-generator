@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>Bath and Body Works Line Name Generator</title>
+
+<style>
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: #1f1427;
+	color: #ff00f5;
+	font-family: -apple-system, system-ui, BlinkMacSystemFont, Helvetica, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	margin: 0;
+}
+
+.container {
+	display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+	margin: 0 32px;
+}
+
+button {
+	outline: 0;
+    border: 0;
+    padding: 16px 24px;
+    font-size: 24px;
+    border-radius: 12px;
+    background-color: #531145;
+	cursor: pointer;
+	color: #dd8bd2;
+}
+
+button:hover {
+	background-color: #eb6ffb;
+	color: #31142a;
+}
+
+.margin-bottom-high {
+	margin-bottom: 38px;
+}
+
+.margin-bottom-short {
+	margin-bottom: 16px;
+}
+
+a {
+	text-decoration: none;
+	color: #674373;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #876393;
+}
+
+.main-footer {
+	margin-top: 128px;
+	text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+}
+
+#generated-line-text {
+	visibility: hidden;
+}
+
+#generated-line-name {
+	min-height: 200px;
+}
+
+#generated-line-name {
+	color: white;
+	font-size: 100px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+	<h1>Bath and Body Works Line Name Generator</h1>
+	<h2 class="margin-bottom-high">You can generate your next popular Bath and Body Works Line name using this button:</h2>
+	<button id="generate-button" class="margin-bottom-short">Generate!</button>
+
+	<h2 id="generated-line-text">Generated Line Name is:</h2>
+	<h1 id="generated-line-name"></h1>
+	
+	<footer class="main-footer">
+	<div><a href="https://github.com/burakyucel07" target="_blank"><small>github.com/burakyucel07</small></a></div>
+	<div><a href="https://burakyucel.net" target="_blank"><small>burakyucel.net</small></a></div>
+	</footer>
+</div>
+
+<script>
+
+const lineNameElement = document.getElementById("generated-line-name");
+const lineTextElement = document.getElementById("generated-line-text");
+const generateButton = document.getElementById("generate-button");
+
+generateButton.addEventListener("click", function () {
+	lineNameElement.innerHTML = generateLineName();
+	lineTextElement.style.visibility = "visible";
+});
+
+const firstAdjectives = [
+	"",
+	"Sweet",
+	"Sunkissed",
+	"Clear",
+	"Fresh",
+	"Crisp",
+	"Sparkling",
+	"Hello",
+	"Dark",
+	"Pink",
+	"Backyard",
+	"Frosted",
+	"Light",
+	"Glowing",
+];
+const firstAdjectiveLength = firstAdjectives.length;
+
+const secondAdjectives = [
+	"",
+	"Morning",
+	"Salty",
+	"Twinkling",
+	"Spiced",
+	"Rich",
+	"Cozy",
+	"Bubbly",
+	"Endless",
+	"Japanese",
+	"Pure",
+	"Sugared",
+	"White",
+	"Happy",
+];
+const secondAdjectiveLength = secondAdjectives.length;
+
+const firstNouns = [
+	"Moss",
+	"Musk",
+	"Amber",
+	"Beach",
+	"Coconut",
+	"Lemon",
+	"Cactus",
+	"Beautiful",
+	"Sky",
+	"Blush",
+	"Madagascar",
+	"Bergamot",
+	"Bahamas",
+	"Eucalyptus",
+	"Hibiscus",
+	"Fiji",
+	"Honolulu",
+	"Cherry",
+	"Island",
+	"Ocean",
+	"Mango",
+	"Moonlight",
+	"Peach",
+	"Pineapple",
+	"Rainbow",
+	"Shea",
+	"Rose",
+	"Jam",
+];
+const firstNounLength = firstNouns.length;
+
+const secondNouns = [
+	"Rains",
+	"Waters",
+	"Watermelon",
+	"Sunshine",
+	"Cucumber",
+	"Dreams",
+	"Flakes",
+	"Honeysuckle",
+	"Blossom",
+	"Kiss",
+	"Breeze",
+	"Vanilla",
+	"Pound Cake",
+	"Canyon",
+	"Cashmere",
+	"Chicago",
+	"Lily",
+	"Cupcake",
+	"Sandalwood",
+	"Bloom",
+	"Skies",
+	"Mint",
+	"Spearmint",
+	"Sands",
+	"Waterfalls",
+	"Sheets",
+	"Forest",
+	"Papaya",
+	"Prosecco",
+	"Wonder",
+	"Ivy",
+	"Sugar",
+	"Donut",
+];
+const secondNounLength = secondNouns.length;
+
+function generateRandomNumberBetween(min, max) {
+	return Math.round(Math.random() * (max - min) + min);
+}
+
+function generateLineName() {
+	let generatedNames = [];
+	
+	let adjectives = [
+		firstAdjectives[generateRandomNumberBetween(0, firstAdjectiveLength - 1)],
+		secondAdjectives[generateRandomNumberBetween(0, secondAdjectiveLength - 1)],
+	];
+	
+	let nouns = [
+		firstNouns[generateRandomNumberBetween(0, firstNounLength - 1)],
+		secondNouns[generateRandomNumberBetween(0, secondNounLength - 1)],
+	];
+	
+	const randomAdjNumber = generateRandomNumberBetween(0, 2);
+	if (randomAdjNumber === 0) {
+		generatedNames.push(adjectives[0]);
+	} else if (randomAdjNumber === 1) {
+		generatedNames.push(adjectives[1]);
+	} else if (randomAdjNumber === 2) {
+		generatedNames.push(adjectives[0]);
+		generatedNames.push(adjectives[1]);
+	} 
+	
+	const randomNounNumber = generateRandomNumberBetween(0, 2);
+	if (randomNounNumber === 0) {
+		generatedNames.push(nouns[0]);
+	} else if (randomNounNumber === 1) {
+		generatedNames.push(nouns[1]);
+	} else if (randomNounNumber === 2) {
+		generatedNames.push(nouns[0]);
+		generatedNames.push(nouns[1]);
+	} 
+	
+	let generatedName = generatedNames.join(" ");
+	
+	return generatedName;
+}
+
+</script>
+
+</body>
+</html>
