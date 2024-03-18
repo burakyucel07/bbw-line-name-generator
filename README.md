@@ -1,3 +1,3 @@
 # BBW Line Name Generator
 
-Generator link: (https://github.com/burakyucel07/bbw-line-name-generator)
+Generator link: https://burakyucel07.github.io/bbw-line-name-generator/
